@@ -308,10 +308,17 @@ time_end = time.time() - time_start
 print('Finished processing the cram files',  cram_f1, cram_f2, 'in', time_end, 'seconds')
 
 print('Are the two cram files in comparison different?', cram_chromosomeHashTable_comparisons[0])
-if cram_chromosomeHashTable_comparisons[0] == True:
-    print('there are', cram_chromosomeHashTable_comparisons[1], 'reads in', cram_f1.rsplit('/', 1)[-1], 'not found mapped in', cram_f2.rsplit('/', 1)[-1])
-    print('there are', cram_chromosomeHashTable_comparisons[2], 'reads in', cram_f2.rsplit('/', 1)[-1], 'not found mapped in', cram_f1.rsplit('/', 1)[-1])
-    print('there are', cram_chromosomeHashTable_comparisons[3], 'reads in that were mapped differently between', cram_f2.rsplit('/', 1)[-1], ' and ', cram_f1.rsplit('/', 1)[-1])
+if out_dir == None:
+    if cram_chromosomeHashTable_comparisons[0] == True:
+        print('there are', cram_chromosomeHashTable_comparisons[1], 'reads in', cram_f1.rsplit('/', 1)[-1], 'not found mapped in', cram_f2.rsplit('/', 1)[-1])
+        print('there are', cram_chromosomeHashTable_comparisons[2], 'reads in', cram_f2.rsplit('/', 1)[-1], 'not found mapped in', cram_f1.rsplit('/', 1)[-1])
+        
+if out_dir != None:
+    if cram_chromosomeHashTable_comparisons[0] == True:
+        print('there are', cram_chromosomeHashTable_comparisons[1], 'reads in', cram_f1.rsplit('/', 1)[-1], 'not found mapped in', cram_f2.rsplit('/', 1)[-1])
+        print('there are', cram_chromosomeHashTable_comparisons[2], 'reads in', cram_f2.rsplit('/', 1)[-1], 'not found mapped in', cram_f1.rsplit('/', 1)[-1])
+        print('there are', cram_chromosomeHashTable_comparisons[3], 'reads in that were mapped differently between', cram_f2.rsplit('/', 1)[-1], ' and ', cram_f1.rsplit('/', 1)[-1])
+
 
 final_time = time.time() - total_time
 print('total exectuion time', round(final_time, 3), 'seconds (', round(final_time/60, 3), 'minutes).')
